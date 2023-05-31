@@ -47,6 +47,12 @@ end
 def year_of_kane
   # Give the yr of 'Citizen Kane'.
   execute(<<-SQL)
+  SELECT 
+    yr
+  FROM 
+    movies 
+  WHERE 
+    title = 'Citizen Kane';
   SQL
 end
 
@@ -55,6 +61,14 @@ def trek_films
   # these movies include the words 'Star Trek' in the title). Order results by
   # year.
   execute(<<-SQL)
+  SELECT 
+    id, title , yr
+  FROM 
+    movies
+  WHERE
+    title like 'Star Trek%'
+  ORDER BY 
+    yr;
   SQL
 end
 
