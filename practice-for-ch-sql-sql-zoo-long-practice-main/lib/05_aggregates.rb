@@ -47,12 +47,23 @@ end
 def area_count
   # How many countries have an area of more than 1,000,000?
   execute(<<-SQL)
+  SELECT
+    COUNT(*)
+  FROM
+    countries
+  WHERE area > 1000000;
   SQL
 end
 
 def group_population
   # What is the total population of ('France','Germany','Spain')?
   execute(<<-SQL)
+  SELECT
+    SUM(population)
+  FROM
+    countries
+  WHERE
+    name IN ('France','Germany','Spain');
   SQL
 end
 
